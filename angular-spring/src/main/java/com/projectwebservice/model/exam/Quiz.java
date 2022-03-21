@@ -37,4 +37,18 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Question> questionSet = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "qId=" + qId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", maxMarks='" + maxMarks + '\'' +
+                ", numberOfQuestion='" + numberOfQuestion + '\'' +
+                ", active=" + active +
+                ", category=" + category +
+                ", questionSet=" + questionSet +
+                '}';
+    }
 }

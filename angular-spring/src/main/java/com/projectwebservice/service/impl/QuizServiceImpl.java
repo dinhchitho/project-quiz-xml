@@ -12,10 +12,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 import com.projectwebservice.dto.*;
 
 @Service
@@ -82,7 +80,35 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public Quiz importQuizXml() {
         List<com.projectwebservice.dto.Quiz> quizListXml = unmarshalling("file/quiz.xml").getQuizList();
-        System.out.println("quiz"+quizListXml);
-        return null;
+        List<Quiz> quizList = new ArrayList<>();
+        Quiz quiz = new Quiz();
+        Category category = new Category();
+        com.projectwebservice.model.exam.Question question = new com.projectwebservice.model.exam.Question();
+        Set<com.projectwebservice.model.exam.Question> questionList = new HashSet<>();
+        for (com.projectwebservice.dto.Quiz quizXml: quizListXml
+             ) {
+            quiz.setTitle(quizXml.getTitle());
+            quiz.setActive(true);
+            quiz.setDescription(quiz.getDescription());
+            quiz.setMaxMarks(quizXml.getMaxMarks());
+            quiz.setNumberOfQuestion(quiz.getNumberOfQuestion());
+            category.setTitle(quizXml.getCategory().getTitle());
+            category.setDescription(quizXml.getCategory().getDescription());
+            quiz.setCategory(category);
+            for (Question questionXml: quizXml.getQuestions()
+                 ) {
+                question.setContent(questionXml.getContent());
+                question.setImage(questionXml.getImage());
+                question.setOption1(questionXml.getOption1());
+                question.setOption2(questionXml.getOption2());
+                question.setOption3(questionXml.getOption3());
+                question.setOption4(questionXml.getOption4());
+                question.setAnswer(questionXml.getAnswer());
+                questionList.add(question);
+            }
+            quiz.setQuestionSet(questionList);
+        }
+        System.out.println("quiz"+quiz);
+        return quiz;
     }
 }

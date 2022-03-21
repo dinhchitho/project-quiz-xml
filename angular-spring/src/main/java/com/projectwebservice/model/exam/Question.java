@@ -33,4 +33,20 @@ public class Question {
     @ManyToOne(fetch = FetchType.EAGER)
     private Quiz quiz;
 
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "quesId=" + quesId +
+                ", content='" + content + '\'' +
+                ", image='" + image + '\'' +
+                ", option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                ", option3='" + option3 + '\'' +
+                ", option4='" + option4 + '\'' +
+                ", answer='" + answer + '\'' +
+                ", givenAnswer='" + givenAnswer + '\'' +
+                ", quiz=" + quiz +
+                '}';
+    }
 }

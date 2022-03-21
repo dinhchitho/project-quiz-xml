@@ -30,7 +30,7 @@ public class Quiz {
     @XmlElement(name = "category")
     private Category category;
 
-    @XmlElement(name = "questions")
+    @XmlElement(name = "question")
     private List<Question> questions;
 
     public String getTitle() {

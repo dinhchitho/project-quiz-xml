@@ -1,110 +1,58 @@
 <list_quiz>
     <quiz>
-        <title>
-            Câu hỏi thú vị về những cái nhất ở Việt Nam
-        </title>
-        <description>
-            Ở Việt Nam có rất nhiều cái nhất, bạn hãy đoán xem ở những câu hỏi phía dưới nhé.
-        </description>
-        <maxMarks>
-            10
-        </maxMarks>
-        <numberOfQuestion>
-            2
-        </numberOfQuestion>
+        <title>Câu hỏi thú vị về những cái nhất ở Việt Nam</title>
+        <description>Ở Việt Nam có rất nhiều cái nhất, bạn hãy đoán xem ở những câu hỏi phía dưới nhé.</description>
+        <maxMarks>10</maxMarks>
+        <numberOfQuestion>2</numberOfQuestion>
         <category>
-            <title>
-                Thú Vị
-            </title>
-            <description>
-                Thú vị
-            </description>
+            <title>Thú Vị</title>
+            <description>Thú vị</description>
         </category>
-        <questions>
             <question>
-                <content>
-                    Tòa nhà nào cao nhất Việt Nam hiện nay và nó cao bao nhiêu mét?
-                </content>
-                <image>
-                    1.png
-                </image>
-                <option1>
-                    Tòa nhà Landmark 81
-                </option1>
+                <content>Tòa nhà nào cao nhất Việt Nam hiện nay và nó cao bao nhiêu mét?</content>
+                <image>1.png</image>
+                <option1>Tòa nhà Landmark 81</option1>
                 <option2>Bitexco</option2>
                 <option3>Tòa nhà FPT</option3>
                 <option4>Chung cư</option4>
                 <answer>Tòa nhà Landmark 81</answer>
             </question>
             <question>
-                <content>
-                    Thành phố nào của Việt Nam lớn nhất cả nước?
-                </content>
-                <image>
-                    2.png
-                </image>
-                <option1>
-                    TP.HCM
-                </option1>
+                <content>Thành phố nào của Việt Nam lớn nhất cả nước? </content>
+                <image>2.png</image>
+                <option1>TP.HCM</option1>
                 <option2>Bắc Ninh</option2>
                 <option3>Hà Nội</option3>
                 <option4>Chung cư</option4>
                 <answer>Hà Nội</answer>
             </question>
-        </questions>
     </quiz>
     <quiz>
-        <title>
-            Trắc nghiệm thử tài hiểu biết về du lịch Việt Nam
-        </title>
-        <description>
-            Ở Việt Nam có rất nhiều điểm du lịch đẹp.
-        </description>
-        <maxMarks>
-            10
-        </maxMarks>
-        <numberOfQuestion>
-            2
-        </numberOfQuestion>
+        <title>Trắc nghiệm thử tài hiểu biết về du lịch Việt Nam</title>
+        <description>Ở Việt Nam có rất nhiều điểm du lịch đẹp.</description>
+        <maxMarks>10</maxMarks>
+        <numberOfQuestion>2</numberOfQuestion>
         <category>
-            <title>
-                Du Lịch
-            </title>
-            <description>
-                Du Lịch
-            </description>
+            <title>Du Lịch</title>
+            <description>Du Lịch</description>
         </category>
-        <questions>
             <question>
-                <content>
-                    Đâu là hang động tự nhiên lớn nhất thế giới?
-                </content>
-                <image>
-                    1.png
-                </image>
-                <option1>
-                    Sơn Đoòng
-                </option1>
+                <content>Đâu là hang động tự nhiên lớn nhất thế giới?</content>
+                <image>1.png</image>
+                <option1>Sơn Đoòng</option1>
                 <option2>Thiên Cung</option2>
                 <option3>Tòa nhà FPT</option3>
                 <option4>Phong Nha</option4>
                 <answer>Sơn Đoòng</answer>
             </question>
             <question>
-                <content>
-                    Ngọn núi nào cao thứ hai Việt Nam?
-                </content>
-                <image>
-                    2.png
-                </image>
-                <option1>
-                    Tà Chì Nhù
-                </option1>
+                <content>Ngọn núi nào cao thứ hai Việt Nam?</content>
+                <image>2.png</image>
+                <option1>Tà Chì Nhù</option1>
                 <option2>Bạch Mộc Lương Tử</option2>
                 <option3>Tì Bù Chà</option3>
                 <option4>Putaleng</option4>
                 <answer>Putaleng</answer>
             </question>
-        </questions>
     </quiz>
 </list_quiz>

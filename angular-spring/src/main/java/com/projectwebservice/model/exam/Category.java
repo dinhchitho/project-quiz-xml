@@ -29,4 +29,14 @@ public class Category {
     @JsonIgnore
     private Set<Quiz> quizzes=new HashSet<>();
 
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "cid=" + cid +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", quizzes=" + quizzes +
+                '}';
+    }
 }

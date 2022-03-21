@@ -3,6 +3,8 @@ package com.projectwebservice.service.impl;
 import com.projectwebservice.dto.ListQuiz;
 import com.projectwebservice.model.exam.Category;
 import com.projectwebservice.model.exam.Quiz;
+import com.projectwebservice.repo.CategoryRepository;
+import com.projectwebservice.repo.QuestionRepository;
 import com.projectwebservice.repo.QuizRepository;
 import com.projectwebservice.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,12 @@ public class QuizServiceImpl implements QuizService {
 
     @Autowired
     private QuizRepository quizRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public Quiz addQuiz(Quiz quiz) {
@@ -80,23 +88,23 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public Quiz importQuizXml() {
         List<com.projectwebservice.dto.Quiz> quizListXml = unmarshalling("file/quiz.xml").getQuizList();
-        List<Quiz> quizList = new ArrayList<>();
-        Quiz quiz = new Quiz();
-        Category category = new Category();
-        com.projectwebservice.model.exam.Question question = new com.projectwebservice.model.exam.Question();
-        Set<com.projectwebservice.model.exam.Question> questionList = new HashSet<>();
+        System.out.println("quizListXml"+quizListXml);
         for (com.projectwebservice.dto.Quiz quizXml: quizListXml
              ) {
+            Quiz quiz = new Quiz();
+            Category category = new Category();
+            Set<com.projectwebservice.model.exam.Question> questionList = new HashSet<>();
             quiz.setTitle(quizXml.getTitle());
             quiz.setActive(true);
-            quiz.setDescription(quiz.getDescription());
+            quiz.setDescription(quizXml.getDescription());
             quiz.setMaxMarks(quizXml.getMaxMarks());
-            quiz.setNumberOfQuestion(quiz.getNumberOfQuestion());
+            quiz.setNumberOfQuestion(quizXml.getNumberOfQuestion());
             category.setTitle(quizXml.getCategory().getTitle());
             category.setDescription(quizXml.getCategory().getDescription());
-            quiz.setCategory(category);
+            Category categoryRes = categoryRepository.save(category);
             for (Question questionXml: quizXml.getQuestions()
                  ) {
+                com.projectwebservice.model.exam.Question question = new com.projectwebservice.model.exam.Question();
                 question.setContent(questionXml.getContent());
                 question.setImage(questionXml.getImage());
                 question.setOption1(questionXml.getOption1());
@@ -106,9 +114,15 @@ public class QuizServiceImpl implements QuizService {
                 question.setAnswer(questionXml.getAnswer());
                 questionList.add(question);
             }
-            quiz.setQuestionSet(questionList);
+            quiz.setCategory(categoryRes);
+            Quiz quizRes = quizRepository.save(quiz);
+            for (com.projectwebservice.model.exam.Question question1: questionList
+            ) {
+                question1.setQuiz(quizRes);
+                questionRepository.save(question1);
+            }
+
         }
-        System.out.println("quiz"+quiz);
-        return quiz;
+        return null;
     }
 }

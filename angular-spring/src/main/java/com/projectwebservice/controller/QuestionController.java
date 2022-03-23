@@ -82,7 +82,7 @@ public class QuestionController {
     public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions, Principal principal){
         System.out.println(questions);
         User user = (User) this.userDetailsService.loadUserByUsername(principal.getName());
-        User getUserBy
+
         Quiz quiz =  questions.get(0).getQuiz();
         double markGot=0;
         Integer correctAnswers=0;
@@ -112,6 +112,7 @@ public class QuestionController {
         mark.setCorrectAnswers(finalCorrectAnswers);
         mark.setAttempted(finalAttempted);
         mark.setQuiz(quiz);
+        mark.setUser(user);
         Mark result = markService.addMark(mark);
         return ResponseEntity.ok(map);
     }

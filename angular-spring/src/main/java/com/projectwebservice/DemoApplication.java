@@ -33,7 +33,7 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Quiz quiz = quizService.importQuizXml();
+        //Quiz quiz = quizService.importQuizXml();
 //        User user=new User();
 //        user.setFirstName("admin");
 //        user.setLastName("nguyen");

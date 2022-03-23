@@ -59,4 +59,9 @@ public class QuizController {
         System.out.println("category active:"+this.quizService.getQuizzesOfCategory(category));
         return this.quizService.getActiveQuizzesOfCategory(category);
     }
+
+    @GetMapping("/import")
+    public List<Quiz> importXml() {
+        return quizService.importQuizXml();
+    }
 }

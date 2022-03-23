@@ -1,13 +1,18 @@
 package com.projectwebservice.controller;
 
+import com.projectwebservice.model.User;
+import com.projectwebservice.model.exam.Mark;
 import com.projectwebservice.model.exam.Question;
 import com.projectwebservice.model.exam.Quiz;
+import com.projectwebservice.service.MarkService;
 import com.projectwebservice.service.QuestionService;
 import com.projectwebservice.service.QuizService;
+import com.projectwebservice.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.*;
 
 @RestController
@@ -20,6 +25,12 @@ public class QuestionController {
 
     @Autowired
     private QuizService quizService;
+
+    @Autowired
+    private MarkService markService;
+
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
     @PostMapping("/")
     public ResponseEntity<?> add(@RequestBody Question question){
@@ -68,8 +79,11 @@ public class QuestionController {
     }
 
     @PostMapping("/eval-quiz")
-    public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions){
+    public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions, Principal principal){
         System.out.println(questions);
+        User user = (User) this.userDetailsService.loadUserByUsername(principal.getName());
+        User getUserBy
+        Quiz quiz =  questions.get(0).getQuiz();
         double markGot=0;
         Integer correctAnswers=0;
         Integer attempted=0;
@@ -93,6 +107,12 @@ public class QuestionController {
             put("attempted", finalAttempted);
         }
         };
+        Mark mark = new Mark();
+        mark.setMarksGot(finalMarkGot);
+        mark.setCorrectAnswers(finalCorrectAnswers);
+        mark.setAttempted(finalAttempted);
+        mark.setQuiz(quiz);
+        Mark result = markService.addMark(mark);
         return ResponseEntity.ok(map);
     }
 }

@@ -69,7 +69,14 @@ export class ViewQuizzesComponent implements OnInit {
   }
 
   importQuiz() {
-    
+    this._quiz.importQuiz().subscribe(res => {
+      Swal.fire('Success','Quiz is added','success');
+      if (res) {
+        this.quizzes = res;
+      }
+    }, error => {
+      Swal.fire('Error','Error while adding quiz','error');
+    })
   }
 
 }

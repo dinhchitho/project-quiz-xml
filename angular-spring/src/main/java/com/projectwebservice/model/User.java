@@ -1,14 +1,14 @@
 package com.projectwebservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.projectwebservice.model.exam.Mark;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -32,6 +32,10 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
     @JsonIgnore
     private Set<UserRole> userRoles=new HashSet<>();
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Mark> markList = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

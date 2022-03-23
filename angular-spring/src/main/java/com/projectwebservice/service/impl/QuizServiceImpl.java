@@ -86,7 +86,7 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Quiz importQuizXml() {
+    public List<Quiz> importQuizXml() {
         List<com.projectwebservice.dto.Quiz> quizListXml = unmarshalling("file/quiz.xml").getQuizList();
         System.out.println("quizListXml"+quizListXml);
         for (com.projectwebservice.dto.Quiz quizXml: quizListXml
@@ -123,6 +123,6 @@ public class QuizServiceImpl implements QuizService {
             }
 
         }
-        return null;
+        return quizRepository.findAll();
     }
 }

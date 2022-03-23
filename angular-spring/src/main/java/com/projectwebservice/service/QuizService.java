@@ -20,5 +20,5 @@ public interface QuizService {
     List<Quiz> getActiveQuizzesOfCategory(Category c);
     ListQuiz unmarshalling(String XmlPath);
 
-    Quiz importQuizXml();
+    List<Quiz> importQuizXml();
 }

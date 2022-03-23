@@ -34,6 +34,6 @@ export class QuizService {
     return this._http.get(`${baseUrl}/quiz/category/active/${cid}`);
   }
   public importQuiz(){
-    return this._http.get(`${baseUrl}/quiz/import}`);
+    return this._http.get(`${baseUrl}/quiz/import`);
   }
 }

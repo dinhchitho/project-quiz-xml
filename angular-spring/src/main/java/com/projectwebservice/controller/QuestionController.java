@@ -57,6 +57,7 @@ public class QuestionController {
         list.forEach((q)->{
             q.setAnswer("");
         });
+        System.out.println("i love you");
         Collections.shuffle(list);
         return ResponseEntity.ok(list);
     }

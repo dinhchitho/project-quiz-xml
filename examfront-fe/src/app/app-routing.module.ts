@@ -1,3 +1,4 @@
+import { MarkComponent } from './pages/admin/mark/mark.component';
 import { StartComponent } from './pages/user/start/start.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { NgModule } from '@angular/core';
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: 'quizzes',
         component: ViewQuizzesComponent,
+      },
+      {
+        path: 'marks',
+        component: MarkComponent,
       },
       {
         path: 'add-quiz',

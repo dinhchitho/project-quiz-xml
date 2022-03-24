@@ -1,0 +1,11 @@
+<list_user>
+    <user>
+        <quiz>
+            <mark>
+                <marksGot></marksGot>
+                <correctAnswers></correctAnswers>
+                <attempted></attempted>
+            </mark>
+        </quiz>
+    </user>
+</list_user>

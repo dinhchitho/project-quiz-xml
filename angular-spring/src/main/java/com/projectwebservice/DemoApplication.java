@@ -1,9 +1,12 @@
 package com.projectwebservice;
 
+import com.projectwebservice.markxml.ListUser;
 import com.projectwebservice.model.Role;
 import com.projectwebservice.model.User;
 import com.projectwebservice.model.UserRole;
 import com.projectwebservice.model.exam.Quiz;
+import com.projectwebservice.repo.MarkRepository;
+import com.projectwebservice.service.MarkService;
 import com.projectwebservice.service.QuizService;
 import com.projectwebservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -25,6 +29,9 @@ public class DemoApplication implements CommandLineRunner {
     private QuizService quizService;
 
     @Autowired
+    private MarkService markService;
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public static void main(String[] args) {
@@ -33,6 +40,9 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        ListUser userList = markService.getAllMark();
+        ListUser listUser = markService.marshalling(userList);
+        System.out.println("userList"+listUser);
         //Quiz quiz = quizService.importQuizXml();
 //        User user=new User();
 //        user.setFirstName("admin");

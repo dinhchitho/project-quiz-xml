@@ -3,14 +3,13 @@ import { MarkService } from './../../../services/mark.service';
 import { Component, OnInit } from '@angular/core';
 import baseUrl from 'src/app/services/helper';
 import { switchMap } from 'rxjs/operators';
-import * as converter from 'xml-js';
 @Component({
   selector: 'app-mark',
   templateUrl: './mark.component.html',
   styleUrls: ['./mark.component.scss']
 })
 export class MarkComponent implements OnInit {
-
+  users:any=[];
   marks:any=[];
 
   constructor(private markService:MarkService, private httpClient:HttpClient) { }
@@ -19,7 +18,7 @@ export class MarkComponent implements OnInit {
     this.markService.getAllMarks().subscribe(res => {
       if (res) {
         console.log(res);
-        
+        this.users = res; 
       }
     })
     //this.getMarksXml();

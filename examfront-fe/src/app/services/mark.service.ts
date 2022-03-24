@@ -12,14 +12,7 @@ export class MarkService {
   constructor(private _http: HttpClient) { }
 
   public getAllMarks(){
-    const opts : any = {
-      headers: new HttpHeaders({
-        'Accept': 'text/html, application/xhtml+xml, */*',
-        'Content-Type': 'text/plain; charset=utf-8'
-      }),
-      responseType: 'text'
-    };
-    return this._http.get(`${baseUrl}/mark/`, opts);
+    return this._http.get(`${baseUrl}/mark/`);
   }
   
   //async parseXmlToJson(xml: any) {

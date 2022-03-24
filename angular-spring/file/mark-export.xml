@@ -50,4 +50,18 @@
             </mark>
         </quiz>
     </user>
+    <user>
+        <username>vind1</username>
+        <email>ni@gmail.com</email>
+        <phone>0123456789</phone>
+        <quiz>
+            <title>Câu hỏi thú vị về những cái nhất ở Việt Nam</title>
+            <description>Ở Việt Nam có rất nhiều cái nhất, bạn hãy đoán xem ở những câu hỏi phía dưới nhé.</description>
+            <mark>
+                <marksGot>5.0</marksGot>
+                <correctAnswers>1</correctAnswers>
+                <attempted>2</attempted>
+            </mark>
+        </quiz>
+    </user>
 </list_user>

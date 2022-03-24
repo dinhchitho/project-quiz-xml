@@ -1,15 +1,17 @@
-<mat-card class="mt10 mr20 ml20" *ngFor="let q of marks">
+<mat-card class="mt10 mr20 ml20" *ngFor="let q of users">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>
-            {{ q.title }}
+            {{ q.username }}
         </mat-card-title>
         <mat-card-subtitle>
-            {{ q.category.title }}
+            {{ q.email }}
         </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <p>{{ q.description }}</p>
+        <ng-container *ngFor="let e of q.quizRespones">
+            <p>{{ e.title }}</p>
+        </ng-container>
     </mat-card-content>
     <mat-card-actions>
         <!-- <button [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title" mat-flat-button color="accent">Question</button>

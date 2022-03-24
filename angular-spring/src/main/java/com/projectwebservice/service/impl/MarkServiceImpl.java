@@ -11,6 +11,9 @@ import com.projectwebservice.repo.MarkRepository;
 import com.projectwebservice.repo.QuestionRepository;
 import com.projectwebservice.repo.QuizRepository;
 import com.projectwebservice.repo.UserRepository;
+import com.projectwebservice.respone.MarkResponse;
+import com.projectwebservice.respone.QuizRespone;
+import com.projectwebservice.respone.UserResponse;
 import com.projectwebservice.service.MarkService;
 import com.projectwebservice.service.QuestionService;
 import com.projectwebservice.service.QuizService;
@@ -109,5 +112,46 @@ public class MarkServiceImpl implements MarkService {
             ex.printStackTrace();
         }
         return listUser;
+    }
+
+    @Override
+    public List<UserResponse> getAllMarkUser() {
+        List<User> userListGetDB = userRepository.findAll();
+        List<UserResponse> listUserXmlRoot = new ArrayList<>();
+        List<MarkResponse> markResponseList = new ArrayList<>();;
+        List<QuizRespone> quizResponeList = null;
+        for (User user: userListGetDB
+             ) {
+            List<Mark> isMark = markRepository.findMarkByUserId(user.getId());
+            if (isMark != null && isMark.size() > 0) {
+                UserResponse userResponse = new UserResponse();
+                userResponse.setUsername(user.getUsername());
+                userResponse.setEmail(user.getEmail());
+                userResponse.setPhone(user.getPhone());
+                List<Quiz> quizListGetDb = quizRepository.findAllQuizByUser(user.getId());
+                quizResponeList = new ArrayList<>();
+                for (Quiz quiz: quizListGetDb
+                     ) {
+                    List<Mark> getListMarkDB = markRepository.findMarkByQuizId(quiz.getQId(), user.getId());
+                    if (getListMarkDB != null && getListMarkDB.size() > 0) {
+                        for (Mark mark: getListMarkDB
+                             ) {
+                            QuizRespone quizRespone = new QuizRespone();
+                            quizRespone.setTitle(quiz.getTitle());
+                            quizRespone.setDescription(quiz.getDescription());
+                            MarkResponse markResponse = new MarkResponse();
+                            markResponse.setMarksGot(mark.getMarksGot());
+                            markResponse.setCorrectAnswers(mark.getCorrectAnswers());
+                            markResponse.setAttempted(mark.getAttempted());
+                            quizRespone.setMarkResponse(markResponse);
+                            quizResponeList.add(quizRespone);
+                        }
+                    }
+                }
+                userResponse.setQuizRespones(quizResponeList);
+                listUserXmlRoot.add(userResponse);
+            }
+        }
+        return listUserXmlRoot;
     }
 }

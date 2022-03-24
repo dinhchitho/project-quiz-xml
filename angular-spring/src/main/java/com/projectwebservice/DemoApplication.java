@@ -6,6 +6,7 @@ import com.projectwebservice.model.User;
 import com.projectwebservice.model.UserRole;
 import com.projectwebservice.model.exam.Quiz;
 import com.projectwebservice.repo.MarkRepository;
+import com.projectwebservice.respone.UserResponse;
 import com.projectwebservice.service.MarkService;
 import com.projectwebservice.service.QuizService;
 import com.projectwebservice.service.UserService;
@@ -40,9 +41,10 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        ListUser userList = markService.getAllMark();
-        ListUser listUser = markService.marshalling(userList);
-        System.out.println("userList"+listUser);
+//        ListUser userList = markService.getAllMark();
+//        ListUser listUser = markService.marshalling(userList);
+        List<UserResponse> userResponses = markService.getAllMarkUser();
+        System.out.println("userList"+userResponses);
         //Quiz quiz = quizService.importQuizXml();
 //        User user=new User();
 //        user.setFirstName("admin");
